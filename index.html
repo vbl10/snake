@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake</title>
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script>
+      document.documentElement.setAttribute("data-theme", "dark");
+      function btnPlay() {
+        document.getElementById("home").style.visibility = "hidden";
+        document.getElementById("game").style.visibility = "visible";
+        startGame();
+      }
+      function btnHowToPlay() {}
+      function btnTryAgain() {
+        document.getElementById("game_over").style.visibility = "hidden";
+        startGame();
+      }
+      function btnResume() {
+        document.getElementById("pause").style.visibility = "hidden";
+        resumeGame();
+      }
+      function btnRestart() {
+        document.getElementById("pause").style.visibility = "hidden";
+        startGame();
+      }
+      function btnQuit() {
+        document.getElementById("game").style.visibility = "hidden";
+        document.getElementById("pause").style.visibility = "hidden";
+        document.getElementById("game_over").style.visibility = "hidden";
+        document.getElementById("home").style.visibility = "visible";
+      }
+    </script>
+  </head>
+
+  <body>
+    <div
+      style="
+        position: relative;
+        margin-left: 150pt;
+        margin-right: 150pt;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      "
+    >
+      <!--home-->
+      <div id="home" style="position: absolute; width: 100%">
+        <h1 style="margin: 0">Snake</h1>
+        <div
+          style="
+            background-color: var(--accent);
+            height: 2pt;
+            margin-bottom: 4pt;
+          "
+        ></div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            column-gap: 5px;
+            height: 50px;
+          "
+        >
+          <button
+            class="primary-button"
+            style="flex-grow: 1"
+            onclick="btnPlay()"
+          >
+            Play
+          </button>
+          <button style="flex-grow: 1" onclick="btnHowToPlay()">
+            How to play
+          </button>
+          <button style="flex-grow: 1">Log in</button>
+          <button style="flex-grow: 1">Sign up</button>
+        </div>
+        <div>
+          <!-- style="margin-top: 20pt; border: 2pt solid; border-color: var(--accent); border-radius: 5pt;">-->
+          <h2 style="margin-bottom: 5pt; text-align: center">Leaderboard</h2>
+          <!--<div style="height: 2pt; background-color: var(--accent);"></div>-->
+          <table
+            style="
+              width: 100%;
+              border: 2pt solid;
+              border-color: var(--accent);
+              border-collapse: collapse;
+            "
+          >
+            <tr>
+              <th style="border: 2pt solid; border-color: var(--accent)">
+                Name
+              </th>
+              <th>Score</th>
+            </tr>
+            <tr>
+              <td>Vinicius</td>
+              <td style="text-align: right">58</td>
+            </tr>
+            <tr>
+              <td>Gabriel</td>
+              <td style="text-align: right">58</td>
+            </tr>
+            <tr>
+              <td>Ana</td>
+              <td style="text-align: right">58</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!--game-->
+      <div
+        id="game"
+        style="
+          position: absolute;
+          visibility: hidden;
+          display: grid;
+          grid-template-columns: 0fr auto 0fr;
+          grid-template-rows: 1fr;
+        "
+      >
+        <div style="display: flex; flex-direction: row; align-items: center">
+          <h1 style="margin: 0; writing-mode: vertical-lr; rotate: 180deg">
+            Snake
+          </h1>
+        </div>
+        <!--canvas and hidden menus-->
+        <div style="position: relative; display: flex; flex-direction: column">
+          <div class="horiz_bar stats_bar">
+            <div class="horiz_bar" style="flex-grow: 1">
+              <h5>Score:</h5>
+              <h5 id="score">0</h5>
+            </div>
+            <div
+              style="width: 2pt; background-color: var(--accent); height: 100%"
+            ></div>
+            <div class="horiz_bar" style="flex-grow: 1">
+              <h5>Best:</h5>
+              <h5 id="best">0</h5>
+            </div>
+          </div>
+          <canvas id="canvas1"></canvas>
+          <script src="snake.js"></script>
+          <div class="game_pop_up_menu" id="game_over">
+            <h2 style="text-align: center">Game Over!</h2>
+            <button onclick="btnTryAgain()">Try again</button>
+            <button onclick="btnQuit()">Quit</button>
+          </div>
+          <div class="game_pop_up_menu" id="pause">
+            <h2>Pause</h2>
+            <button onclick="btnResume()">Resume</button>
+            <button onclick="btnRestart()">Restart</button>
+            <button onclick="btnQuit()">Quit</button>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center">
+          <h1 style="margin: 0; writing-mode: vertical-lr">Snake</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+div.horiz_bar {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    column-gap: 10pt;
+    justify-content: space-between;
+}
+.horiz_bar * {
+    margin: 0;
+}
+div.stats_bar {
+    color: var(--text);
+    background-color: var(--secondary);
+    border-radius: 5pt;
+    padding: 5pt;
+    font-weight: 100;
+    margin-bottom: 5pt;
+}
+#canvas1 {
+    border:2pt solid;
+    border-color: var(--accent);
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+}
+.game_pop_up_menu {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    visibility: hidden;
+    row-gap: 2pt;
+    background-color: var(--background);
+    padding: 20pt;
+    border-radius: 5pt;
+}
+.game_pop_up_menu * {
+    margin: 0;
+}
+
+table, th, td {
+    border: 2pt solid;
+    border-color: var(--accent);
+    font-size: 24pt;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: var(--secondary);
+}
